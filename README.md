@@ -24,6 +24,13 @@ Link the google's `protocol bufffers` library as the third party in [Unreal Engi
 The environment variables required for compilation
 * `PB_LIBRARY_PATH` The directory where this document is located
 
+## Pull Subrepos
+
+```
+cd %PB_LIBRARY_PATH%
+git submodule update --init --recursive 
+```
+
 ## Apply the patch
 ```
 cd %PB_LIBRARY_PATH%\protobuf-source
@@ -143,7 +150,6 @@ cmake -G "Unix Makefiles" \
  -DCMAKE_INSTALL_CMAKEDIR=lib/mac/cmake -DCMAKE_CXX_STANDARD=14 \
  -Dprotobuf_BUILD_TESTS=false -Dprotobuf_WITH_ZLIB=false \
  -Dprotobuf_BUILD_EXAMPLES=false \
- -Dprotobuf_BUILD_PROTOC_BINARIES=false -Dprotobuf_BUILD_LIBPROTOC=false \
  $PB_LIBRARY_PATH/protobuf-source/cmake
 cmake --build . --target install --config Release
 ```
@@ -155,11 +161,16 @@ mkdir -p $PB_LIBRARY_PATH/build/_ios && cd $PB_LIBRARY_PATH/build/_ios
 cmake -G "Unix Makefiles" \
  -DCMAKE_INSTALL_PREFIX=$PB_LIBRARY_PATH/libprotobuf \
  -DCMAKE_TOOLCHAIN_FILE=$PB_LIBRARY_PATH/build/ios/ios.toolchain.cmake \
- -DCMAKE_INSTALL_LIBDIR=lib/ios -DPLATFORM=OS64 \
- -DCMAKE_INSTALL_CMAKEDIR=lib/ios/cmake -DCMAKE_CXX_STANDARD=17 \
- -Dprotobuf_BUILD_TESTS=false -Dprotobuf_WITH_ZLIB=false \
+ -DCMAKE_INSTALL_LIBDIR=lib/ios \
+ -DPLATFORM=OS64 \
+ -DCMAKE_INSTALL_CMAKEDIR=lib/ios/cmake \
+ -DCMAKE_CXX_STANDARD=17 \
+ -Dprotobuf_BUILD_TESTS=false \
+ -Dprotobuf_WITH_ZLIB=false \
  -Dprotobuf_BUILD_EXAMPLES=false \
- -Dprotobuf_BUILD_PROTOC_BINARIES=false -Dprotobuf_BUILD_LIBPROTOC=false \
+ -Dprotobuf_BUILD_PROTOC_BINARIES=false \
+ -Dprotobuf_BUILD_LIBPROTOC=false \
+ -DDEPLOYMENT_TARGET=15.0 \
  $PB_LIBRARY_PATH/protobuf-source/cmake
 cmake --build . --target install --config Release
 ```

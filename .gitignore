@@ -1,0 +1,17 @@
+**/.DS_Store
+
+build/_mac/
+libprotobuf/bin/protoc
+libprotobuf/bin/protoc-3.19.0.0
+libprotobuf/lib/mac/cmake/
+libprotobuf/lib/mac/libprotobuf-lite.a
+libprotobuf/lib/mac/libprotobuf.a
+libprotobuf/lib/mac/libprotoc.a
+libprotobuf/lib/mac/pkgconfig/
+	
+build/_ios/
+libprotobuf/lib/ios/cmake/
+libprotobuf/lib/ios/libprotobuf-lite.a
+libprotobuf/lib/ios/libprotobuf.a
+libprotobuf/lib/ios/pkgconfig/
+
